@@ -1,1 +1,1 @@
-module.exports = require('./optimizer');
+exports = require('./optimizer');

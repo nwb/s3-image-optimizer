@@ -1,10 +1,15 @@
-# TyniPng S3
+# TinyPng S3 image optimizer
 
-This is revised from original optim at  sourcey/s3-image-optimizer. This version use https://tinypng.com/ service, which have a much highger optimization rate than the imagemin package.
-Besides paramters in optim, this package need the the Tynipng api key as TYNIPNG_KEY.
+## Function
+This is revised from original optim at https://github.com/sourcey/s3-image-optimizer. This version use https://tinypng.com/ service, which have a much highger optimization rate than the imagemin package.
+Besides parameters in optim, this package needs the the Tynipng api key as TYNIPNG_KEY.
 This package will also skip the GIT images as it is not handled by tinypng.
 
+## one possible bug fix
+Some how the original version is having issue with 'Handler is not a function'.
+I dropped the 'module.' from index.js, so it looks like 'exports = require('./optimizer');' now.
 
+##Intro from original
 Automagitically optimize your images on S3 with the magic of AWS Lambda.
 
 Optim is a super-simple [Lambda][l] function that can listen to an S3 bucket for uploads, and runs everything it can through [imagemin][imagemin].
@@ -40,7 +45,7 @@ Optim is a super-simple [Lambda][l] function that can listen to an S3 bucket for
 There are two sets of configuration here. The `.env` file contains configuration related to setup and deployment, and `runtime.env` is for configuration of how Optim behaves.
 
 In `.env`:
- * `TYNIPNG_KEY`: the apt key from tynipng.com
+ * `TYNIPNG_KEY`: the api key from tynipng.com
  * `AWS_ACCESS_KEY_ID`: the AWS access key used to deploy the Lambda function
  * `AWS_SECRET_ACCESS_KEY`: the corresponding secret access key
  * `AWS_ROLE_ARN`: role with which the lambda function will be executed
@@ -52,10 +57,6 @@ In `.env`:
 In `runtime.env`:
 
  * `UPLOAD_ACL`: finalised images will be uploaded with this permission level. Should be one of `private` `public-read` `public-read-write` `aws-exec-read` `authenticated-read` `bucket-owner-read` `bucket-owner-full-control`. Default is `public-read`.
- * `MAX_FILE_SIZE`: files over this size in bytes will be skipped (e.g. big PNGs will probably just hit the timeout anyway). Set to `-1` for no limit
- * `PNG_OPTIM_LEVEL`: Optimization level to use for PNGs, between 0 and 7. Lower level means faster optimization, higher means better results.
-
 
 [l]: https://aws.amazon.com/lambda/
-[imagemin]: https://github.com/imagemin/imagemin
 [s3-evt-setup]: http://docs.aws.amazon.com/AmazonS3/latest/UG/SettingBucketNotifications.html
