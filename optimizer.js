@@ -110,7 +110,7 @@ function processOne(key, callback) {
 
             s3.putObject({
                 ACL: UPLOAD_ACL,
-                Bucket: SOURCE_BUCKET,
+                Bucket: UPLOAD_BUCKET,
                 Key: key,
                 Body: file,
                 ContentType: obj.ContentType,
