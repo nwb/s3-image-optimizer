@@ -1,4 +1,9 @@
-# Optim
+# TyniPng S3
+
+This is revised from original optim at  sourcey/s3-image-optimizer. This version use https://tinypng.com/ service, which have a much highger optimization rate than the imagemin package.
+Besides paramters in optim, this package need the the Tynipng api key as TYNIPNG_KEY.
+This package will also skip the GIT images as it is not handled by tinypng.
+
 
 Automagitically optimize your images on S3 with the magic of AWS Lambda.
 
@@ -35,7 +40,7 @@ Optim is a super-simple [Lambda][l] function that can listen to an S3 bucket for
 There are two sets of configuration here. The `.env` file contains configuration related to setup and deployment, and `runtime.env` is for configuration of how Optim behaves.
 
 In `.env`:
-
+ * `TYNIPNG_KEY`: the apt key from tynipng.com
  * `AWS_ACCESS_KEY_ID`: the AWS access key used to deploy the Lambda function
  * `AWS_SECRET_ACCESS_KEY`: the corresponding secret access key
  * `AWS_ROLE_ARN`: role with which the lambda function will be executed
