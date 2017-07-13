@@ -25,9 +25,9 @@ var SKIP_FILE_SIZE = +process.env.MAX_FILE_SIZE || -1;
 // How many keys to retrieve with a single request to the S3 API.
 // Larger key sets require paging and multiple calls.
 var maxKeys = 100; // number os keys per query
-var processedLog = './processed.log'; // file containing all precessed files
-var skippedLog = './skipped.log'; // file containing all skipped files
-var markerFile = './.marker'; // file containing current file marker
+var processedLog = '/tmp/processed.log'; // file containing all precessed files
+var skippedLog = '/tmp/skipped.log'; // file containing all skipped files
+var markerFile = '/tmp/.marker'; // file containing current file marker
 
 // Array of S3 keys to process
 var keys = [];

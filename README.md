@@ -9,6 +9,8 @@ This package will also skip the GIT images as it is not handled by tinypng.
 Some how the original version is having issue with 'Handler is not a function'.
 I dropped the 'module.' from index.js, so it looks like 'exports = require('./optimizer');' now.
 
+Lambda does not allow file writing in local directory. so I set the log files in /tmp/ folders. so .marker, processe.log and skipped.log will be in /tmp.
+
 ##Intro from original
 Automagitically optimize your images on S3 with the magic of AWS Lambda.
 
